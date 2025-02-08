@@ -10,7 +10,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Getter
 @Slf4j
 public class RelatorioSintetico {
 
@@ -62,26 +61,19 @@ public class RelatorioSintetico {
         );
     }
 
-    public String getMontanteDeVendas() {
-        return FormatUtils.formataParaReal(montanteDeVendas);
-    }
-
     public void exibir() {
         log.info("##### RELATÓRIO SINTÉTICO -> VALORES TOTAIS #####");
         System.out.println();
 
-        log.info("TOTAL DE PEDIDOS REALIZADOS: {}", getQuantidadeDePedidos());
-        log.info("TOTAL DE PRODUTOS VENDIDOS: {}", getTotalDeProdutosVendidos());
-        log.info("TOTAL DE CATEGORIAS: {}", getTotalDeCategorias());
+        log.info("TOTAL DE PEDIDOS REALIZADOS: {}", quantidadeDePedidos);
+        log.info("TOTAL DE PRODUTOS VENDIDOS: {}", totalDeProdutosVendidos);
+        log.info("TOTAL DE CATEGORIAS: {}", totalDeCategorias);
         System.out.println();
 
-        log.info("MONTANTE DE VENDAS: {}", getMontanteDeVendas());
+        log.info("MONTANTE DE VENDAS: {}", FormatUtils.formataParaReal(montanteDeVendas));
         System.out.println();
 
-        Pedido pedidoMaisBarato = getPedidoMaisBarato();
         log.info("PEDIDO MAIS BARATO: {} ({})", FormatUtils.formataParaReal(pedidoMaisBarato.getValorTotal()), pedidoMaisBarato.getProduto());
-
-        Pedido pedidoMaisCaro = getPedidoMaisCaro();
         log.info("PEDIDO MAIS CARO: {} ({})\n", FormatUtils.formataParaReal(pedidoMaisCaro.getValorTotal()), pedidoMaisCaro.getProduto());
         System.out.println();
 
